@@ -2,3 +2,4 @@
 
 <img src="screenshots/Home.png">
 <img src="screenshots/playground.png">
+<img src="screenshots/Result.png">
