@@ -1,3 +1,6 @@
+const artBoard = document.getElementById('art-board');
+const modalBox = document.getElementById('modal-box');
+
 document.addEventListener('keyup',function handleKeyboardButtonPress(event){
     const playerPressed =event.key;
     const currentAlphabetElement = document.getElementById('current-alphabet');
@@ -24,8 +27,12 @@ document.addEventListener('keyup',function handleKeyboardButtonPress(event){
         const currentLifeText = currentLifeElement.innerText;
         const currentLife = parseInt(currentLifeText);
 
+        
         const newLife = currentLife-1;
         currentLifeElement.innerText=newLife;
+
+        const updatedLifePercentage =(newLife/5)*100;
+        artBoard.style.background = `linear-gradient(#FFFFFFB3 ${updatedLifePercentage}%,red)`
 
         if(newLife===0){
             gameOver();
@@ -34,6 +41,8 @@ document.addEventListener('keyup',function handleKeyboardButtonPress(event){
     };
 
 });
+
+
 
 function continueGame(){
     const alphabet = getARandomAlphabet();
@@ -77,11 +86,21 @@ function gameOver(){
         }
     }
     
+    artBoard.style.background ="linear-gradient(#FFFFFFB3 100%,red)"
 
 
 };
 
 
+function modalOpen(event){
+    if(event.clientY<20){
+        modalBox.style.display = 'flex';
 
+    }
+}
+function modalClose(){
+    modalBox.style.display = 'none';
+}
+document.body.onmousemove = modalOpen;
 
 
